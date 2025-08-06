@@ -1,0 +1,55 @@
+1.0 Network Fundamentals
+>>>WAN Tutorial
+WAN Tutorial
+Go to comments
+Unlike LAN which is used effectively in relatively small geographic areas, WAN services help connect networks at a broad geographic distance, from a few to thousands of kilometers. Let’s see the network below, while LANs are used inside buildings like Home, Office, Internet Service Provider (ISP)… WANs are often used to connect between them. By the way, Internet is the largest WAN nowadays.
+
+WAN_connections.jpg
+
+Because of long distance connection, individuals usually do not own WAN (unlike LAN which they often own it). They do not have the rights to bury a long cable between buildings either. Therefore they hire available network service providers, such as ISPs, cable or telephone companies… in their cities instead. This helps reduce the connection cost very much.
+
+
+Note: Although we often think about serial connections with copper cables when talking about WAN but nowadays fiber optical cables play an important role in connection at both LAN and WAN. Great bandwidth, great distance, very little signal loss, high speed, security, thin… are very big advantages in the transmission so they are used more and more popular in networking.
+WAN Devices & Terminologies
+
+WAN includes many devices and terminologies so you should grasp them. Below are the most popular ones:
+
++ Router: a device provides internetworking and WAN access interfaces that connect to the provider network
++ Data Terminal Equipment (DTE): Typically, DTE is the router (at the customer side)
++ Data Communications Equipment (DCE): provides a clocking signal used to synchronize data transmission between DCE and DTE devices.
++ Customer Premise Equipment (CPE): devices located at the customer side. CPE often owned by the customer or hired from the WAN provider. In the picture below, the router, LAN switch and two computers in the house are classified as CPE
++ Demarcation Point: the physical point where the public network ends and the private network of a customer begins
++ Local loop: A cable connects the CPE to the nearest exchange or Central Office (CO) of the service provider. In other words, it is the physical link that connects from the demarcation point to the edge of the service provider’s network
+
+Demarcation_point_local_loop.jpg
+
++ CSU/DSU: short for Channel Service Unit/Data Service Unit, used on digital lines such as T1, T3 or E1. CSU/DSU provides clocking signal to the customer equipment interface and terminates the channelized transport media to a leased line. As a result, DSU/CSU converts one form of digital format to another digital format. Therefore CSU/DSU terminates a digital local loop. But you will not see CSU/DSU nowadays because most T1 or E1 interfaces on current routers integrate CSU/DSU capabilities
+
++ Modem: short for Modulator/Demodulator, a Modem is a hardware device that allows a computer to send and receive information over telephone lines by converting digital data into an analog signal used on phone lines, and vice versa. Modem terminates an analog local loop
+
+Modem_WAN.jpg
+
+WAN Layer 2 Protocols
+
+Two important WAN technologies common in enterprise networks today and will be discussed in our tutorial are: Leased lines (or point-to-point link) and Packet-Switching.
+
+WAN_Encapsulations.jpg
+
+Leased line
+
+The two most popular WAN protocols used on leased lines are High-Level Data-Link Control (HDLC) and Point-to-Point Protocol (PPP).
+
++ High-Level Data-Link Control (HDLC): a point-to-point protocol and it is the default WAN protocol for Cisco routers. Although HDLC is an open standard but each vendor has a proprietary field in their HDLC implementation which makes HDLC a proprietary protocol. Therefore running HDLC between routers from different vendors is not going to work.
++ Point-to-Point Protocol (PPP): it is an open standard and a point-to-point protocol. This is the most popular WAN protocol nowadays used in Dial, xDSL, ISDN, Serial applications. PPP supports both synchronous (like analog phone lines) and asynchronous circuits (such as ISDN or digital links). PPP consists of two subprotocols:
+* Link Control Protocol (LCP): set up the link and take care of authentication. After finishing setting up the link, it uses NCP.
+* Network Control Protocol (NCP): negotiate optional configuration parameters and facilities for the network layer. In other words, it makes sure IP and other protocols can operate correctly on PPP link
+
+PPP has built-in security mechanisms which are Password Authentication Protocol (PAP) and Challenge Handshake Authentication Protocol (CHAP). While PAP sends password in clear text, CHAP uses encrypted text (called a hash of the password) with a three-way handshake for authentication so CHAP is very secure.
+
+Packet-Switching
+
+A big advantage of packet-switching over leased line services is we can connect many routers to the packet-switching service using a single serial link on each router. Each router can then communicate with all other routers. A popular type of packet-switching service that you need to grasp in CCNA is Frame-Relay. Asynchronous Transfer Mode (ATM) is another type of packet-switching service but it is out of CCNA scope and we will not discuss it in this tutorial.
+
++ Frame-Relay: a digital packet-switched service that can run only across synchronous digital connections. Because digital connections have very few errors, it does not perform any error correction or flow control. However, Frame Relay detects errors and drops bad frames. It is up to a higher layer protocol, such as TCP, to resend the dropped information. For more information about this protocol please read our Frame Relay tutorial.
+
+All three protocols above operate at Layer 2 (Data Link Layer) of the OSI Model.
